@@ -6,104 +6,62 @@ import "./suggestionspage.css";
 
 export function Suggestions() {
     const user = useSelector((state) =>
-        state.users.user.find((user) => user.id === state.users.currentUser.id)
+        state.users.user.find((u) => u.id === state.users.currentUser.id)
     );
-
     const currentUserCache = useSelector(
-        (state) => state.users.currentUser
-    );
-
-    const [counter, setCounter] = useState(0);
+        (state) => state.users.currentUser );
     const dispatch = useDispatch();
-
-    const apiResponse = currentUserCache.homePageConfigs?.suggestionResponse;
+    const apiResponse =currentUserCache.homePageConfigs?.suggestionResponse || [];
     const preferences = user.preferences;
     const sortedpreferences = CategoryRanker([...preferences]);
-
-    if (preferences.length === 0) {
+    const [index, setIndex] = useState(0);
+    if (!preferences.length) {
         return (
             <div className="no-suggestions-container-sp">
-                <h2 className="no-suggestions-heading-sp">
-                    No Suggestions Available
-                </h2>
-
-                <p className="no-suggestions-text-sp">
-                    Select some preferences to get personalized suggestions.
-                </p>
+                <h2>No Suggestions Available</h2>
+                <p>Select preferences to get suggestions.</p>
             </div>
         );
     }
 
     useEffect(() => {
-        if ( counter===1 ||
-            (counter-1<=sortedpreferences.length && 
-               (
-            apiResponse[counter - 2]?.data ||
-            apiResponse[counter - 2]?.error
-        )
-            )
-        ) {
-            console.log("fetched",counter)
-            dispatch(
-                apiThunk({
-                    language: user.language,
-                    country: user.country,
-                    title: sortedpreferences[counter - 1]?.category?.type,
-                    page: 1,
-                    query: sortedpreferences[counter - 1]?.category?.type,
-                    isSearch: false,
-                    isSuggestion: true,
-                })
-            );
-
-            return;
-        }
-    }, [counter, apiResponse.length]);
-
+        if (index >= sortedpreferences.length) return;
+    const currentCategory =
+            sortedpreferences[index]?.category?.type;
+        if (!currentCategory) return;
+        dispatch(
+            apiThunk({
+                language: user.language,
+                country: user.country,
+                title: currentCategory,
+                query: currentCategory,
+                page: 1,
+                isSearch: false,
+                isSuggestion: true,
+            })
+        );
+    }, [index]);
     useEffect(() => {
-        setCounter(1);
-    }, []);
-
-    useEffect(() => {
-        console.log(counter);
-
-        if (apiResponse.length === counter) {
-            if (counter > preferences.length) {
-                return;
-            }
-
+        if (apiResponse.length > index) {
             const timer = setTimeout(() => {
-                setCounter((prev) => prev + 1);
-            }, 1000);
-
+                setIndex((prev) => prev + 1);
+            }, 800); 
             return () => clearTimeout(timer);
         }
-    }, [apiResponse?.length, counter]);
-
+    }, [apiResponse.length]);
     return (
         <div className="category-articles-container-sp">
-            {apiResponse.map((category, index) => (
-                <div
-                    className="category-heading-sp"
-                    key={category.category}
-                >
-                    <h2 className="category-title-sp">
-                        {category.category}
-                    </h2>
+            {apiResponse.map((category, i) => (
+                <div className="category-heading-sp" key={i}>
+                    <h2>{category.category}</h2>
 
                     {category.loading ? (
-                        <div className="loading-state-sp">
-                            Loading {category.category}...
-                        </div>
+                        <div>Loading {category.category}...</div>
                     ) : category.error ? (
-                        <div className="error-state-sp">
-                            <div className="error-message-sp">
-                                {category.error}
-                            </div>
-
+                        <div>
+                            <p>{category.error}</p>
                             <button
-                                className="retry-button-sp"
-                                onClick={() => {
+                                onClick={() =>
                                     dispatch(
                                         apiThunk({
                                             language: user.language,
@@ -114,61 +72,48 @@ export function Suggestions() {
                                             isSearch: false,
                                             isSuggestion: true,
                                         })
-                                    );
-                                }}
+                                    )
+                                }
                             >
                                 Retry
                             </button>
                         </div>
                     ) : !category.data?.articles?.length ? (
-                        <div className="empty-state-sp">
-                            No Articles Found.
-                        </div>
+                        <div>No Articles Found</div>
                     ) : (
                         <div className="articles-display-block-sp">
                             {category.data.articles
                                 .slice(0, 4)
-                                .map((article, index) => (
+                                .map((article, idx) => (
                                     <div
                                         className="articles-card-sp"
-                                        key={index}
+                                        key={idx}
                                     >
                                         <img
-                                            className="article-image-sp"
                                             src={article.image}
                                             alt={article.title}
                                         />
 
-                                        <div className="article-info-sp">
-                                            <h3 className="title-sp">
-                                                {article.title}
-                                            </h3>
+                                        <h3>{article.title}</h3>
+                                        <p>{article.description}</p>
 
-                                            <p className="article-data-sp">
-                                                {article.description}
-                                            </p>
+                                        <span>
+                                            {article.source.name}
+                                        </span>
 
-                                            <div className="article-origin-sp">
-                                                <span>
-                                                    {article.source.name}
-                                                </span>
+                                        <span>
+                                            {new Date(
+                                                article.publishedAt
+                                            ).toLocaleDateString()}
+                                        </span>
 
-                                                <span>
-                                                    {new Date(
-                                                        article.publishedAt
-                                                    ).toLocaleDateString()}
-                                                </span>
-                                            </div>
-
-                                            <a
-                                                className="article-link-sp"
-                                                href={article.url}
-                                                target="_blank"
-                                                rel="noreferrer"
-                                            >
-                                                Read More →
-                                            </a>
-                                        </div>
+                                        <a
+                                            href={article.url}
+                                            target="_blank"
+                                            rel="noreferrer"
+                                        >
+                                            Read More →
+                                        </a>
                                     </div>
                                 ))}
                         </div>
