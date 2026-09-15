@@ -1,0 +1,136 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+.login-Main-Container{
+    display: grid;
+    width:100%;
+  align-items: center;
+  grid-template-columns: 1.5fr 1fr;
+  background: #f5f7fb;
+  padding: 40px;
+  gap: 40px;
+     
+}
+.app-info-container {
+background: linear-gradient(135deg, #111827, #1f2937);
+  color: white;
+  border-radius: 20px;
+  display: flex;
+  padding: 60px;
+  flex-direction: column;
+  justify-content: center;
+  gap: 25px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+.info-title {
+  margin: 0;
+  font-size: 48px;
+  line-height: 60px;
+}
+.info-subtitle{
+     margin: 0;
+  color: #dbeafe;
+  font-weight: 500;
+}
+.insight-para {
+  font-size: 18px;
+  line-height: 32px;
+  color: #f8fafc;
+}
+.features-div {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  font-size: 17px;
+}
+
+.user-login-container {
+  background: #fff;
+  border-radius: 20px;
+  display: flex;
+  gap:20px;
+  flex-direction: column;
+  padding: 20px;
+  justify-content: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+.login-header {
+  text-align: center;
+  margin-bottom: 35px;
+  color: #222;
+}
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.input-field {
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  font-size: 16px;
+  outline: none;
+}
+.error-field {
+  color: red;
+  font-size: 14px;
+}
+.button-section-lp {
+  display: flex;
+  gap: 15px;
+  margin-top: 15px;
+}
+.login-button {
+  flex: 1;
+  padding: 14px 16px;
+  border: none;
+  border-radius: 10px;
+background: #1a2233;
+ color: #ffffff;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+.signup-button {
+  flex: 1;
+  padding: 14px 16px;
+  border: 1px solid #2563eb;
+  border-radius: 10px;
+  background: #f59e0b;
+color: #111827;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+@media (max-width:900px)  {
+   .login-Main-Container{
+   display: grid;
+   grid-template-columns: 1fr;
+   align-items: center;
+   justify-content: center;
+   width:100%;
+   padding:10px;
+   }
+   .app-info-container
+   {
+    order: 2;
+    padding:32px;
+   }
+  .login-form{
+    order: 1;
+    justify-content: center;
+    align-items: center;
+  }
+  .input-field{
+    min-width: 85%;
+  }
+  .button-section-lp{
+    min-width: 80%;
+    justify-content: space-around;
+  }
+}

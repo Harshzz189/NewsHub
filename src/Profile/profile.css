@@ -1,0 +1,533 @@
+:root {
+
+  --fs-heading: clamp(1.75rem, 1.45rem + 1vw, 2.25rem);
+  --fs-section: clamp(1.25rem, 1.1rem + 0.6vw, 1.625rem);
+ --fs-label: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+--fs-body: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+--fs-button: clamp(1rem, 0.96rem + 0.2vw, 1.0625rem);
+--fs-small: clamp(0.9375rem, 0.91rem + 0.15vw, 1rem);
+  --space-xs: clamp(6px, 0.4vw, 8px);
+  --space-sm: clamp(10px, 0.8vw, 12px);
+  --space-md: clamp(14px, 1vw, 18px);
+  --space-lg: clamp(18px, 1.5vw, 24px);
+  --space-xl: clamp(24px, 2vw, 32px);
+
+  --radius: clamp(12px, 0.8vw, 18px);
+}
+
+.profilepage-main-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  padding: var(--space-lg);
+  gap: var(--space-md);
+  background: #eef2f6;
+}
+
+.leftside-container{
+    background:linear-gradient(
+        180deg,
+        #ffffff,
+        #fafafa
+    );
+
+    border-radius:var(--radius);
+
+    box-shadow:0 6px 18px rgba(0,0,0,.08);
+
+    padding:clamp(22px,2vw,30px);
+}
+.leftside-container .preferences-input-container{
+
+    padding:0;
+
+    border-radius:0;
+
+    box-shadow:none;
+
+    min-height:auto;
+
+}
+
+
+.settings-icon {
+  font-size: clamp(3rem, 2.5rem + 2vw, 4.4rem);
+}
+
+.settings-header {
+  margin: 0;
+  font-size: var(--fs-heading);
+  font-weight: 700;
+  line-height: 1.2;
+}
+.default-data-container{
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:var(--space-md);
+
+    text-align:center;
+
+    padding:var(--space-lg);
+
+    min-height:340px;
+}
+
+.settings-icon{
+    font-size: clamp(2.4rem, 1.8rem + 2vw, 4rem);
+
+    line-height: 1;
+
+    max-width: 100%;
+}
+
+.settings-header{
+    margin: 0;
+
+    font-size: var(--fs-heading);
+
+    line-height: 1.2;
+
+    text-align: center;
+}
+
+.defaulter{
+    margin: 0;
+
+    max-width: 30ch;
+
+    font-size: var(--fs-body);
+
+    line-height: 1.6;
+
+    color: #666;
+}
+
+.profile-tips{
+    margin-top: var(--space-lg);
+
+    width: 100%;
+
+    background: #f8fafc;
+
+    border: 1px solid var(--color-border);
+
+    border-radius: var(--radius);
+
+    padding: var(--space-md);
+
+    box-sizing: border-box;
+}
+
+.profile-tips h4{
+    margin: 0 0 var(--space-sm);
+
+    font-size: var(--fs-section);
+
+    font-weight: 600;
+
+    text-align: center;
+}
+
+.profile-tips ul{
+    margin: 0;
+
+    padding-left: 1.1rem;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: var(--space-sm);
+}
+
+.profile-tips li{
+    color: var(--color-secondary);
+
+    font-size: clamp(.82rem,.65rem+.35vw,var(--fs-body));
+
+    line-height: 1.55;
+
+    overflow-wrap: break-word;
+}
+
+.defaulter {
+  margin: 0;
+  max-width: 32ch;
+  font-size: var(--fs-body);
+  line-height: 1.6;
+  color: #666;
+}
+
+.user-form-profile {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.submit-button {
+  width: 180px;
+  padding: clamp(10px, 0.8vw, 13px)
+           clamp(14px, 1vw, 16px);
+  border: none;
+  border-radius: 10px;
+  background: #10b981;
+  color: #fff;
+  font-size: var(--fs-button);
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.right-side-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+
+  height: fit-content;
+
+  padding: var(--space-lg);
+
+  background: linear-gradient(180deg, #ffffff, #fafafa);
+
+  border-radius: var(--radius);
+
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.profile-title {
+  margin: 0;
+
+  padding-bottom: var(--space-sm);
+
+  border-bottom: 1px solid #ececec;
+
+  font-size: var(--fs-heading);
+
+  font-weight: 700;
+
+  line-height: 1.2;
+
+  color: #222;
+}
+
+.profile-section {
+  display: flex;
+  flex-direction: column;
+
+  gap: var(--space-xs);
+
+  padding-bottom: var(--space-md);
+
+  border-bottom: 1px solid #ececec;
+}
+
+.profile-section:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.section-title {
+  margin: 0;
+
+  padding-left: 12px;
+
+  border-left: 4px solid #111;
+
+  font-size: var(--fs-section);
+
+  font-weight: 600;
+
+  color: #444;
+}
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+
+  padding: var(--space-sm);
+
+  background: #f8f8f8;
+
+  border-radius: 10px;
+}
+
+.info-item strong {
+  font-size: var(--fs-label);
+  font-weight: 600;
+}
+
+.info-item p {
+  margin: 0;
+
+  font-size: var(--fs-body);
+
+  line-height: 1.6;
+
+  color: #666;
+}
+
+.prefernces-div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+}
+
+.user-preferences {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  color: #111827;
+
+   font-size: var(--fs-body);
+
+  font-weight: 500;
+}
+
+.user-preferences::before {
+  content: "•";
+
+  font-size: clamp(1rem, 0.9rem + .6vw, 1.3rem);
+
+  line-height: 1;
+
+  color: #111827;
+}
+
+.change-button,
+.logout-button,
+.submit-button {
+  font-size: var(--fs-button);
+
+  padding: clamp(10px, .8vw, 13px)
+           clamp(14px, 1vw, 16px);
+
+  border-radius: 10px;
+
+  cursor: pointer;
+
+  transition: .25s;
+}
+
+.change-button {
+  border: none;
+
+  background: #f3f3f3;
+
+  text-align: left;
+}
+
+.change-button:hover {
+  background: #111;
+  color: white;
+}
+
+.logout-section {
+  border-top: 1px solid #ececec;
+}
+
+.logout-button {
+  width: 100%;
+
+  border: none;
+
+  background: #ef4444;
+
+  color: white;
+}
+
+.logout-button:hover {
+  background: #dc2626;
+}
+
+.leftside-container .preferences-input-container {
+  padding: var(--space-lg);
+
+  border-radius: var(--radius);
+
+  min-height: auto;
+
+  box-shadow: none;
+}
+
+.leftside-container .preferences-form {
+  gap: var(--space-lg);
+}
+
+.leftside-container .preference-layout {
+  gap: var(--space-sm);
+}
+
+.leftside-container .input-heading {
+  font-size: var(--fs-section);
+}
+
+.leftside-container .preference-label {
+  font-size: var(--fs-label);
+}
+
+.leftside-container .requirements-para {
+  font-size: var(--fs-small);
+}
+
+.leftside-container .preference-field {
+  padding: clamp(10px, .8vw, 12px);
+
+  font-size: var(--fs-body);
+}
+
+.leftside-container .interests-choices {
+  grid-template-columns: 1fr;
+
+  gap: var(--space-sm);
+}
+
+.leftside-container .interests-label {
+  padding: clamp(10px, .8vw, 12px);
+
+  font-size: var(--fs-small);
+}
+
+.leftside-container .language-options {
+  display: grid;
+
+  grid-template-columns: 1fr;
+
+  gap: var(--space-sm);
+}
+
+.leftside-container .language-label {
+  width: 100%;
+
+  min-width: unset;
+
+  padding: clamp(10px, .8vw, 12px);
+
+  font-size: var(--fs-small);
+}
+
+.leftside-container .save-button-pp {
+  width: 100%;
+}
+
+.leftside-container .error-field {
+  font-size: var(--fs-small);
+}
+@media (max-width:440px){
+
+    .profilepage-main-container{
+
+        grid-template-columns: 1.55fr 1fr;
+
+        gap: 10px;
+
+        padding: 10px;
+    }
+
+    .leftside-container{
+
+        padding: 14px;
+    }
+
+    .right-side-container{
+
+        padding: 14px;
+    }
+
+    .default-data-container{
+
+        padding: 10px;
+
+        gap: 10px;
+    }
+
+    .profile-tips{
+
+        margin-top: 14px;
+
+        padding: 12px;
+    }
+
+}
+@media (min-width: 1200px) {
+
+    .preference-label {
+        font-size: 1.15rem;
+    }
+
+    .preference-field {
+        font-size: 1.08rem;
+        padding: 15px 18px;
+    }
+
+    .change-button,
+    .logout-button {
+        font-size: calc(var(--fs-button) + 3px);
+        padding: 14px 22px;
+    }
+
+    .user-preferences {
+        font-size: calc(var(--fs-body) + 4px);
+    }
+
+    .info-item strong {
+        font-size: calc(var(--fs-label) + 3px);
+    }
+
+    .defaulter{
+        max-width: 38ch;
+
+        font-size: calc(var(--fs-body) + 6px);
+
+        line-height: 1.8;
+    }
+
+    .profile-tips{
+        padding: 28px 32px;
+    }
+
+    .profile-tips h4{
+        margin-bottom: 20px;
+
+        font-size: calc(var(--fs-section) + 10px);
+
+        font-weight: 700;
+    }
+
+    .profile-tips ul{
+        padding-left: 1.5rem;
+
+        gap: 18px;
+    }
+
+    .profile-tips li{
+        font-size: calc(var(--fs-body) + 8px);
+
+        line-height: 1.85;
+    }
+
+    .save-note{
+        padding: 26px 30px;
+    }
+
+    .save-note h4{
+        margin-bottom: 14px;
+
+        font-size: calc(var(--fs-section) + 10px);
+
+        font-weight: 700;
+    }
+
+    .save-note p{
+        font-size: calc(var(--fs-body) + 8px);
+
+        line-height: 1.85;
+    }
+
+}

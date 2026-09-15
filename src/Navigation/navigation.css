@@ -1,0 +1,179 @@
+
+
+.Nav-bar-main{
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+  justify-content: center;
+    width: 100%;
+
+    background: #111;
+    border-bottom: 1px solid #2a2a2a;
+
+    overflow-x: hidden;
+}
+
+
+.nav-container{
+
+    width: min(96%, 1600px);
+
+    padding: 0 clamp(12px, 1.5vw, 24px);
+
+    box-sizing: border-box;
+
+    height: clamp(64px, 5vw, 76px);
+
+    display: grid;
+
+    grid-template-columns: auto 1fr auto;
+
+    align-items: center;
+
+    column-gap: clamp(8px, 2vw, 32px);
+
+}
+
+.logo {
+
+  display: flex;
+  align-items: center;
+  gap: clamp(8px, .8vw, 14px);
+font-size: clamp(16px, 14px + 0.9vw, 30px);
+  font-weight: 700;
+
+  color: #cfcfcf;
+
+  cursor: pointer;
+
+  user-select: none;
+
+  white-space: nowrap;
+}
+
+.navlinks-div{
+
+    width:100%;
+
+    display:flex;
+    justify-content: space-around;
+    align-items:center;
+
+    gap:clamp(16px,3vw,50px);
+
+}
+
+.navlinks-div a {
+
+  color: white;
+
+  text-decoration: none;
+
+  font-weight: 500;
+
+  transition: color .25s ease;
+}
+
+.navlinks-div a:hover {
+
+  color: #cfcfcf;
+}
+
+.navlinks-div a.active {
+
+  color: #cfcfcf;
+
+  font-weight: 700;
+
+  text-decoration: underline;
+
+  text-decoration-thickness: 2px;
+
+  text-underline-offset: clamp(4px, .35vw, 7px);
+}
+
+.logout-button {
+
+  justify-self: end;
+
+  padding:
+      clamp(8px, .45vw, 12px)
+      clamp(16px, 1vw, 22px);
+
+  border: none;
+
+  border-radius: clamp(10px, .7vw, 14px);
+
+  background: #ff4747;
+
+  color: white;
+
+  font-size: clamp(.9rem, .85rem + .15vw, 1rem);
+
+  font-weight: 600;
+
+  white-space: nowrap;
+
+  cursor: pointer;
+
+  transition:
+      background .25s ease,
+      transform .25s ease;
+}
+
+.logout-button:hover {
+
+  background: #e63939;
+
+  transform: translateY(-1px);
+}
+
+.page-wrapper {
+
+  width: min(96%, 1600px);
+
+  margin: clamp(8px, .7vw, 12px) auto;
+
+  background: white;
+
+  border-radius: clamp(12px, .8vw, 18px);
+
+  box-shadow: 0 8px 30px rgba(0,0,0,.08);
+
+  overflow: hidden;
+}
+@media (max-width:440px){
+
+  .nav-container{
+    width:98%;
+    padding:0 6px;
+    column-gap:6px;
+  }
+
+  .logo{
+    font-size:15px;
+    gap:4px;
+  }
+
+  .navlinks-div{
+    gap:8px;
+  }
+
+  .navlinks-div a{
+    font-size:14px;
+  }
+
+  .logout-button{
+    font-size:12px;
+    padding:6px 8px;
+  }
+
+}
+@media (min-width:1200px)
+{
+  .navlinks-div{
+    align-items: end;
+    justify-content: end;
+  }
+}
