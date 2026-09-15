@@ -148,7 +148,7 @@ console.log(isSuggestion)
 
 
 onMouseEnter={(e)=>{
-e.target.style.background="#2563eb";
+e.target.style.background="#111827";
 e.target.style.color="white";
 }}
 

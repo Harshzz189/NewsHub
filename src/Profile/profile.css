@@ -176,7 +176,7 @@
            clamp(14px, 1vw, 16px);
   border: none;
   border-radius: 10px;
-  background: #10b981;
+  background: #d4a017;
   color: #fff;
   font-size: var(--fs-button);
   font-weight: 600;
@@ -297,7 +297,7 @@
 
   line-height: 1;
 
-  color: #111827;
+  color: #8b93a6;
 }
 
 .change-button,
